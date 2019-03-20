@@ -9,6 +9,11 @@ public class Address {
 		this.address = address;
 		this.index = index;
 	}
+	
+	public void init(){
+		System.out.println("Address created: " + this);
+	}
+	
 	@Override
 	public String toString() {
 		return "Address [address=" + address + ", index=" + index + "]";

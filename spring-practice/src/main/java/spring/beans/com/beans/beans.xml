@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-destroy-method="destroy" default-init-method="init">
 
-	<bean id="person" class="spring.beans.com.Person">
+	<bean id="person" class="spring.beans.com.Person" scope="prototype"
+		destroy-method="onDestroy" init-method="onCreate">
 		<constructor-arg name="id" value="5" type="int"></constructor-arg>
 		<constructor-arg name="name" value="Jerry" type="String"></constructor-arg>
 		<property name="taxId" value="888"></property>

@@ -27,6 +27,14 @@ public class Person {
 		this.address = address;
 	}
 
+	public void onCreate(){
+		System.out.println("Person created: " + this );
+	}
+	
+	public void onDestroy(){
+		System.out.println("Person destroyed");
+	}
+	
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", name=" + name + ", taxId=" + taxId + ", address=" + address + "]";
