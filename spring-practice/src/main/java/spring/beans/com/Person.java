@@ -19,20 +19,24 @@ public class Person {
 		this.taxId = taxId;
 	}
 
-	public void speak() {
-		System.out.println("Hello!");
-	}
-
 	public void setAddress(Address address) {
 		this.address = address;
 	}
 
+	// init method
 	public void onCreate(){
 		System.out.println("Person created: " + this );
 	}
 	
+	// destroy method
 	public void onDestroy(){
 		System.out.println("Person destroyed");
+	}
+	
+	// factory method
+	public static Person getInstance(int id, String name){
+		System.out.println("Create an instanace using factory method");
+		return new Person(id, name);
 	}
 	
 	@Override

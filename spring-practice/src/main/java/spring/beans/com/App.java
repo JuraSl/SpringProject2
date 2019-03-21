@@ -13,11 +13,10 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/spring/beans/com/beans/beans.xml");
 		
 		// getting beans from container passing an id "person"
-		Person person1 = (Person)context.getBean("person");
-		Person person2 = (Person)context.getBean("person");
-		person1.speak();
-		person1.setTaxId(777);
-		System.out.println(person2);
+		Person person = (Person)context.getBean("person");
+		
+		person.setTaxId(777);
+		//System.out.println(person);
 		
 		/*
 		Address address = (Address)context.getBean("address");

@@ -4,16 +4,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 	default-destroy-method="destroy" default-init-method="init">
 
-	<bean id="person" class="spring.beans.com.Person" scope="prototype"
-		destroy-method="onDestroy" init-method="onCreate">
-		<constructor-arg name="id" value="5" type="int"></constructor-arg>
-		<constructor-arg name="name" value="Jerry" type="String"></constructor-arg>
+	<bean id="person" class="spring.beans.com.Person" scope="singleton"
+		destroy-method="onDestroy" init-method="onCreate" factory-method="getInstance">
 		<property name="taxId" value="888"></property>
 		<property name="address" ref="address"></property>
+		<constructor-arg name="id" type="int" value="777"></constructor-arg>
+		<constructor-arg name="name" type="String" value="Bob"></constructor-arg>
+	</bean>
+
+	<bean id="person2" class="spring.beans.com.Person" scope="singleton"
+		destroy-method="onDestroy" init-method="onCreate"
+		factory-method="createPerson" factory-bean="personFactory">
+		<property name="taxId" value="0000"></property>
+		<property name="address" ref="address"></property>
+		<constructor-arg name="id" type="int" value="123445"></constructor-arg>
+		<constructor-arg name="name" type="String" value="Mike"></constructor-arg>
 	</bean>
 
 	<bean name="address" class="spring.beans.com.Address">
 		<constructor-arg name="address" value="111 SaintAnnes"></constructor-arg>
 		<constructor-arg name="index" value="D12"></constructor-arg>
+	</bean>
+	<bean id="personFactory" class="spring.beans.com.PersonFactory">
 	</bean>
 </beans>
