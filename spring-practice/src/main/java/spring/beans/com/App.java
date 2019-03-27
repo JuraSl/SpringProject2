@@ -16,11 +16,11 @@ public class App {
 		Person person = (Person)context.getBean("person");
 		
 		person.setTaxId(777);
-		//System.out.println(person);
+		System.out.println(person);
 		
-		/*
-		Address address = (Address)context.getBean("address");
-		System.out.println(address);*/
+		
+		Address address = (Address)context.getBean("address2");
+		System.out.println("\n" + address);
 		
 		// closing resources
 		((ClassPathXmlApplicationContext)context).close();
