@@ -5,29 +5,30 @@
 
 
 	<bean name="jungle" class="springListOfBeans.Jungle">
-	
-		
-	<property name="largest" ref="elephant"></property>
+
+
+		<property name="largest">
+			<bean class="springListOfBeans.Animals">
+				<property name="name" value="Tim"></property>
+				<property name="type" value="elephant"></property>
+			</bean>
+		</property>
 		<property name="animals">
-			<list>				
-				<ref bean="lion" />
-				<ref bean="elephant" />
-				<ref bean="snake" />
+			<list>
+				<bean class="springListOfBeans.Animals">
+					<property name="name" value="Ron"></property>
+					<property name="type" value="lion"></property>
+				</bean>
+				<bean class="springListOfBeans.Animals">
+					<property name="name" value="Tim"></property>
+					<property name="type" value="elephant"></property>
+				</bean>
+				<bean class="springListOfBeans.Animals">
+					<property name="name" value="Tim"></property>
+					<property name="type" value="snake"></property>
+				</bean>
 			</list>
 		</property>
 	</bean>
 
-	<bean name="lion" class="springListOfBeans.Animals">
-		<property name="name" value="Ron"></property>
-		<property name="type" value="lion"></property>
-	</bean>
-	<bean name="elephant" class="springListOfBeans.Animals">
-		<property name="name" value="Tim"></property>
-		<property name="type" value="elephant"></property>
-	</bean>
-
-	<bean name="snake" class="springListOfBeans.Animals">
-		<property name="name" value="Tim"></property>
-		<property name="type" value="snake"></property>
-	</bean>
 </beans>
