@@ -1,26 +1,14 @@
 package springListOfBeans;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Jungle {
 
-	private Animals largest;
-	private List<Animals> animals;
+	private Map<String, String> foods = new HashMap<String, String>();
 
-	public Animals getLargest() {
-		return largest;
-	}
-
-	public void setLargest(Animals largest) {
-		this.largest = largest;
-	}
-
-	public List<Animals> getAnimals() {
-		return animals;
-	}
-
-	public void setAnimals(List<Animals> animals) {
-		this.animals = animals;
+	public void setFoods(Map<String, String> foods) {
+		this.foods = foods;
 	}
 
 	@Override
@@ -28,13 +16,8 @@ public class Jungle {
 		
         StringBuilder sb = new StringBuilder();
 		
-		sb.append("Largest: " + largest);
-		sb.append("\n");
-		sb.append("Others:\n");
-		
-		for(Animals animal: animals) {
-			sb.append(animal);
-			sb.append("\n");
+		for(Map.Entry<String, String> food: foods.entrySet()) {
+			sb.append(food.getKey() + ": " + food.getValue() + "\n");
 		}
 		
 		return sb.toString();
