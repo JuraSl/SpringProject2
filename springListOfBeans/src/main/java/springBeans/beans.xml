@@ -3,18 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean name="jungle" class="springListOfBeans.Jungle">
-		<property name="foods">
-			<props>
-				<prop key="snake">eggs</prop>
-				<prop key="lion">zebra</prop>
-				<prop key="elephant">plants</prop>
-			</props>
-		</property>
-	</bean>
-
-
 	<bean id="lion" class="springListOfBeans.Animals">
 		<property name="name" value="Ron"></property>
 		<property name="type" value="lion"></property>
@@ -26,6 +14,23 @@
 	<bean id="snake" class="springListOfBeans.Animals">
 		<property name="name" value="Tim"></property>
 		<property name="type" value="snake"></property>
+	</bean>
+
+	<bean name="jungle" class="springListOfBeans.Jungle">
+		<property name="foods">
+			<props>
+				<prop key="snake">eggs</prop>
+				<prop key="lion">zebra</prop>
+				<prop key="elephant">plants</prop>
+			</props>
+		</property>
+		
+		<property name="animals">
+			<map>
+				<entry key="Lion" value-ref="lion"></entry>
+				<entry key="Elephant" value-ref="elephant"></entry>
+			</map>
+		</property>
 	</bean>
 
 </beans>
