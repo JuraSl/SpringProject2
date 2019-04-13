@@ -10,7 +10,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		// Creating spring-bean container
-		ApplicationContext context = new ClassPathXmlApplicationContext("springBaens/beans.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring_Beans/beans.xml");
 
 	    Logger logger = (Logger)context.getBean("logger");
 		//System.out.println(logger);

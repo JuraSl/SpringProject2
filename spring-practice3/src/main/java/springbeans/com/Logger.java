@@ -2,10 +2,15 @@ package springbeans.com;
 
 public class Logger {
 	
-	private ConsoleWriter consoleWriter;
-	private FileWriter fileWriter;
+	private LogWriter consoleWriter;
+	private LogWriter fileWriter;
 	
 	
+	public Logger(ConsoleWriter consoleWriter, FileWriter fileWriter) {
+		this.consoleWriter = consoleWriter;
+		this.fileWriter = fileWriter;
+	}
+
 	public void setConsoleWriter(ConsoleWriter consoleWriter) {
 		this.consoleWriter = consoleWriter;
 	}
