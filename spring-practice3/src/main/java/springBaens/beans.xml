@@ -5,7 +5,7 @@
 
 
 	<bean name="logger" class="springbeans.com.Logger"
-		autowire="byType">
+		autowire="byName">
 	</bean>
 
 	<bean name="consoleWriter" class="springbeans.com.ConsoleWriter"></bean>
