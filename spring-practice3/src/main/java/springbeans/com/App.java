@@ -12,11 +12,10 @@ public class App {
 		// Creating spring-bean container
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring_Beans/beans.xml");
 
-	    Logger logger = (Logger)context.getBean("logger");
-		//System.out.println(logger);
+		Logger log = (Logger) context.getBean("logger");
 				
-		logger.writeConsole("Hello!");
-		logger.writeFile("Hello again");
+		log.printToConsole("Printing ");
+		log.printToFile("Printing ");
 				
 		// closing resources
 		((ClassPathXmlApplicationContext)context).close();

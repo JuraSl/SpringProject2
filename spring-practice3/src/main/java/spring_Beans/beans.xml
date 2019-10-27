@@ -7,11 +7,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
-	<bean name="logger" class="springbeans.com.Logger"> </bean>
-
-	<bean name="consoleWriter" class="springbeans.com.ConsoleWriter"></bean>
-	
-	<bean name="fileWriter" class="springbeans.com.FileWriter"></bean>
-	
+	<context:component-scan base-package="springbeans.com"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
+	
+	<bean id="consoleWriter" class="springbeans.com.ConsoleWriter"></bean>
+	<bean id="console" class="springbeans.com.ConsoleWriter"></bean>
+	<bean id="fileWriter" class="springbeans.com.FileWriter"></bean>
+	
+	<bean id="logger" class="springbeans.com.Logger"></bean>
 </beans>
