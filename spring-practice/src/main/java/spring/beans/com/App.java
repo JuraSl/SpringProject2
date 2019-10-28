@@ -13,16 +13,10 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/spring/beans/com/beans/beans.xml");
 		
 		// getting beans from container passing an id "person"
-		Person person = (Person)context.getBean("person");
+		Robot robot = (Robot)context.getBean("robot");
 		
-		person.setTaxId(777);
-		System.out.println(person);
+		robot.speak();
 		
-		
-		Address address = (Address)context.getBean("address2");
-		System.out.println("\n" + address);
-		
-		// closing resources
 		((ClassPathXmlApplicationContext)context).close();
 	}
 
