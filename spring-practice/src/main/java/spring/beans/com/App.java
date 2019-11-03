@@ -7,7 +7,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class App {
 
 	public static void main(String[] args) {
-
+		
 		
 		// Creating spring-bean container
 		ApplicationContext context = new ClassPathXmlApplicationContext("/spring/beans/com/beans/beans.xml");
