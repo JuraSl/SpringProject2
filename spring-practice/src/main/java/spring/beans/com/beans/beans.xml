@@ -11,4 +11,10 @@
 	
 	<context:component-scan base-package="spring.beans.com"></context:component-scan>
 	
+	<context:property-placeholder
+		location="spring/beans/com/props/jdbc.properties" />
+	<bean id="robot" class="spring.beans.com.Robot">
+		<property name="id" value="${user}"></property>
+		<property name="speach" value="${password}"></property>
+	</bean>
 </beans>
