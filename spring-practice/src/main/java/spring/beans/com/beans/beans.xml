@@ -9,10 +9,19 @@
 
 	<context:component-scan base-package="spring.beans.com"></context:component-scan>
 	
-	<context:property-placeholder
-		location="spring/beans/com/props/jdbc.properties" />
+	<context:property-placeholder location="spring/beans/com/props/jdbc.properties" />
+		
 	<bean id="robot" class="spring.beans.com.Robot">
 		<property name="id" value="${user}"></property>
 		<property name="speach" value="${password}"></property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+	<property name="driverClassName" value="${jdbc.driver}"></property>
+	<property name="url" value="${jdbc.url}"></property>
+	<property name="password" value="${jdbc.password}"></property>
+	<property name="username" value="${jdbc.username}"></property>
 	</bean>
 </beans>
