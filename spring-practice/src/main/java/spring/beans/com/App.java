@@ -1,5 +1,7 @@
 package spring.beans.com;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -13,9 +15,13 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/spring/beans/com/beans/beans.xml");
 		
 		// getting beans from container passing an id "person"
-		Robot robot = (Robot)context.getBean("robot");
+		OffersDao offersDao = (OffersDao)context.getBean("offersDao");
 		
-		robot.speak();
+		List<Offers> list = offersDao.getOffers();
+		
+		for(Offers offer: list){
+			System.out.println(offer);
+		}
 		
 		((ClassPathXmlApplicationContext)context).close();
 	}
