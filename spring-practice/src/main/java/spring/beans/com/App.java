@@ -19,6 +19,7 @@ public class App {
 		// getting beans from container passing an id "person"
 		OffersDao offersDao = (OffersDao)context.getBean("offersDao");
 		try{
+			// list of objects
 			List<Offers> list = offersDao.getOffers();		
 		    for(Offers offer: list){
 			   System.out.println(offer);
@@ -30,6 +31,9 @@ public class App {
 		    	System.out.println(ex.getMessage());
 		    	System.out.println(ex.getClass());
 		    }
+		// just an object, sending a query using an id  
+		Offers offer = offersDao.getOffer(2);
+		System.out.println("Offer for Mick " + offer);
 		
 		((ClassPathXmlApplicationContext)context).close();
 	}

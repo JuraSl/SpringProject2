@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 /*This class is using fully configured DataSource connection pool*/
@@ -17,16 +19,22 @@ import org.springframework.stereotype.Component;
 @Component("offersDao")
 public class OffersDao {
 
-	private JdbcTemplate jdbc;
+	private NamedParameterJdbcTemplate jdbc;
 	
 	@Autowired
 	public void setDataSource(DataSource jdbc) {
-		this.jdbc = new JdbcTemplate(jdbc);
+		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
+	
+	
 	public List<Offers> getOffers(){
 		
-		return jdbc.query("SELECT * FROM springtutorial.offers", new RowMapper<Offers>() {
+	// adding param for a placeholder	
+	MapSqlParameterSource param = new MapSqlParameterSource();
+	param.addValue("name", "Sam");
+	
+		return jdbc.query("SELECT * FROM offers", new RowMapper<Offers>() {
 
 			public Offers mapRow(ResultSet rs, int rowNum) throws SQLException {
 	
@@ -39,6 +47,27 @@ public class OffersDao {
 								
 				return offer;
 			}			
-		});		
+		});			
 	}
+	
+	public Offers getOffer(int id){
+		
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("id", id);
+		
+			return jdbc.queryForObject("SELECT * FROM offers where id = :id",param, new RowMapper<Offers>() {
+
+				public Offers mapRow(ResultSet rs, int rowNum) throws SQLException {
+		
+					Offers offer = new Offers();
+					
+					offer.setId(rs.getInt("id"));
+					offer.setName(rs.getString("name"));
+					offer.setEmail(rs.getString("email"));
+					offer.setText(rs.getString("text"));
+									
+					return offer;
+				}			
+			});			
+		}
 }
