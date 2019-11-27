@@ -26,11 +26,15 @@ public class OffersDao {
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
-	
+	public boolean delete(int id){
+		
+		MapSqlParameterSource param = new MapSqlParameterSource("id", id);
+		return jdbc.update("delete from offers where id=:id",param) == 1;
+	}
 	
 	public List<Offers> getOffers(){
 		
-	// adding param for a placeholder	
+	// creating parameter for a placeholder	
 	MapSqlParameterSource param = new MapSqlParameterSource();
 	param.addValue("name", "Sam");
 	
