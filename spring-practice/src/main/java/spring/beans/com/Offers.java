@@ -7,6 +7,22 @@ public class Offers {
 	private String email;
 	private String text;
 	
+	public Offers() {
+	}
+
+	public Offers(String name, String email, String text) {
+		this.name = name;
+		this.email = email;
+		this.text = text;
+	}
+
+	public Offers(int id, String name, String email, String text) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.text = text;
+	}
+
 	public int getId() {
 		return id;
 	}
