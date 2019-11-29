@@ -18,6 +18,12 @@ public class App {
 		// getting beans from container passing an id "person"
 		OffersDao offersDao = (OffersDao) context.getBean("offersDao");
 
+		Offers updatedOffer = new Offers(11, "Olga", "olga@gmail.com", "Payroll services");
+		if(offersDao.update(updatedOffer)){
+			System.out.println("Offer updated succesfully");
+		}else{
+			System.out.println("Offer did not updated");
+		}
 		try {
 			// Getting Placeholder Values from Beans by adding constructors to
 			// Offers object and creating new

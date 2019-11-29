@@ -27,6 +27,12 @@ public class OffersDao {
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
+	// update an offer object in database 
+	public boolean update(Offers offer){
+		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
+		return jdbc.update("update offers set name=:name, text=:text, email=:email where id=:id", params)==1;
+	}
+	
 	public boolean create(Offers offer){
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
 		return jdbc.update("insert into offers (name, email, text) values(:name, :email, :text)", params)==1;
