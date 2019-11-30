@@ -1,5 +1,6 @@
 package spring.beans.com;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -25,9 +26,17 @@ public class App {
 			System.out.println("Offer did not updated");
 		}
 		try {
+			List<Offers> offerList = new ArrayList<Offers>();
+			offerList.add(new Offers("Anastacia", "anastacia@gmail.com", "design creator"));
+			offerList.add(new Offers("Alina", "alina@gmail.com", "web rendering"));
+			
+			int[] circuit = offersDao.create(offerList);
+			for(int value: circuit){
+				System.out.println("Updated " + value + " row");
+			}
 			// Getting Placeholder Values from Beans by adding constructors to
 			// Offers object and creating new
-			// method .create to update table list
+			// method.create to update table list
 			Offers offer1 = new Offers("Sergei", "sergei@gamil.com", "Testing code");
 			Offers offer2 = new Offers("Andrew", "andrew@gamil.com", "Writes javascript");
 			if (offersDao.create(offer1)) {

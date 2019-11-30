@@ -13,6 +13,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 
 /*This class is using fully configured DataSource connection pool*/
@@ -27,6 +29,14 @@ public class OffersDao {
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
+	// this method runs the statement for every object in the list
+	public int[] create(List<Offers> offer){
+		// creating special parameters. Util method which return an array of objects
+		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offer.toArray());
+		// this method returns array of int
+		return jdbc.batchUpdate("insert into offers (name, email, text) values(:name, :email, :text)", params);
+	}
+	
 	// update an offer object in database 
 	public boolean update(Offers offer){
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
