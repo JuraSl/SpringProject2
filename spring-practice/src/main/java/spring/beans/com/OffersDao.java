@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /*This class is using fully configured DataSource connection pool*/
 
@@ -30,11 +31,12 @@ public class OffersDao {
 	}
 
 	// this method runs the statement for every object in the list
+	@Transactional
 	public int[] create(List<Offers> offer){
-		// creating special parameters. Util method which return an array of objects
+		// Prepared Statement, creating special parameters. Util method which return an array of objects
 		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offer.toArray());
 		// this method returns array of int
-		return jdbc.batchUpdate("insert into offers (name, email, text) values(:name, :email, :text)", params);
+		return jdbc.batchUpdate("insert into offers (id, name, email, text) values(:id, :name, :email, :text)", params);
 	}
 	
 	// update an offer object in database 

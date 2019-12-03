@@ -18,22 +18,25 @@ public class App {
 
 		// getting beans from container passing an id "person"
 		OffersDao offersDao = (OffersDao) context.getBean("offersDao");
-
+/*
 		Offers updatedOffer = new Offers(11, "Olga", "olga@gmail.com", "Payroll services");
 		if(offersDao.update(updatedOffer)){
 			System.out.println("Offer updated succesfully");
 		}else{
 			System.out.println("Offer did not updated");
-		}
+		}*/
 		try {
+			
 			List<Offers> offerList = new ArrayList<Offers>();
-			offerList.add(new Offers("Anastacia", "anastacia@gmail.com", "design creator"));
-			offerList.add(new Offers("Alina", "alina@gmail.com", "web rendering"));
+			offerList.add(new Offers(1, "Anastacia", "anastacia@gmail.com", "design creator"));
+			offerList.add(new Offers(2, "Alina", "alina@gmail.com", "web rendering"));
 			
 			int[] circuit = offersDao.create(offerList);
 			for(int value: circuit){
 				System.out.println("Updated " + value + " row");
 			}
+			
+			/*
 			// Getting Placeholder Values from Beans by adding constructors to
 			// Offers object and creating new
 			// method.create to update table list
@@ -45,11 +48,10 @@ public class App {
 			;
 			if (offersDao.create(offer2)) {
 				System.out.println("Created offer2");
-			}
-			;
+			};
 
 			// deleting data(row) from the table
-			offersDao.delete(5);
+			offersDao.delete(9);
 
 			// list of objects
 			List<Offers> list = offersDao.getOffers();
@@ -60,7 +62,7 @@ public class App {
 			// just getting an object from the table by sending a query using an
 			// id
 			Offers offer = offersDao.getOffer(2);
-			System.out.println("Offer for Mick " + offer);
+			System.out.println("Offer for Mick " + offer);*/
 
 		} catch (CannotGetJdbcConnectionException ex) {
 			System.out.println(ex.getMessage());
