@@ -9,6 +9,11 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- Dispatcher     acts as the front controller for the application.This means DispatcherServlet receives 
+                      each request and direct the request to appropriate controller.It is also responsible for 
+                      directing the response from controller to appropriate views.The web.xml should be given 
+                      in such a way that DispatcherServlet should be invoked for client requests. -->
   <servlet>
     <description></description>
     <display-name>offers</display-name>
@@ -16,6 +21,9 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
+  <!--        indicates which URLs will be handled by the which DispatcherServlet. In our web.xml all HTTP
+              requests ending with .jsp will be handled by the dispatcher DispatcherServlet.  -->
   <servlet-mapping>
     <servlet-name>offers</servlet-name>
     <url-pattern>/</url-pattern>
