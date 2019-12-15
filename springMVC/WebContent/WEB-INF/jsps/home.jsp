@@ -9,5 +9,8 @@
 <body>
   Hi there!
   Session: <%= session.getAttribute("name") %> <p/>
+  ////////////
+  Request: <%= request.getAttribute("name") %> <p/>
+  Request using EL: ${name} <p/>
 </body>
 </html>
