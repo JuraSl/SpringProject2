@@ -23,9 +23,9 @@ public class OffersController {
 		
 	return mv;
 	}*/
-	
+	@RequestMapping("/")
 	public String showHome(Model model){
-		model.addAttribute("name", "Dublin");
+		model.addAttribute("name", "<b>Dublin</b>");
 		
 		return "home";
 	}
